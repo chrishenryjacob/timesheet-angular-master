@@ -10,6 +10,8 @@
       <p-autoComplete
         formControlName="task"
         [suggestions]="tasks"
+        (completeMethod)="searchTask($event)"
+        [delay]="300"
         optionLabel="name"
       />
       <small
@@ -23,7 +25,11 @@
 
     <section class="d-flex flex-column">
       <label>START</label>
-      <p-calendar formControlName="start" />
+      <p-calendar
+        formControlName="start"
+        [showTime]="true"
+        [hourFormat]="'12'"
+      />
       <small
         *ngIf="
           form.get('start')?.touched && form.get('start')?.hasError('required')
@@ -35,7 +41,7 @@
 
     <section class="d-flex flex-column">
       <label>END</label>
-      <p-calendar formControlName="end" />
+      <p-calendar formControlName="end" [showTime]="true" [hourFormat]="'12'" />
       <small
         *ngIf="
           form.get('end')?.touched && form.get('end')?.hasError('required')
@@ -60,9 +66,9 @@
       </ng-template>
       <ng-template pTemplate="body" let-log>
         <tr>
-          <td>{{ log.taskName }}</td>
-          <td>{{ log.start * 1000 | date : "long" }}</td>
-          <td>{{ log.end * 1000 | date : "long" }}</td>
+          <td>{{ log.task.name }}</td>
+          <td>{{ log.start | date : "medium" }}</td>
+          <td>{{ log.end | date : "medium" }}</td>
         </tr>
       </ng-template>
     </p-table>

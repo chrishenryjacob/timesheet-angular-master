@@ -1,6 +1,14 @@
-export interface Log {
+export interface TaskDetails {
+  createdAt: string;
+  name: string;
   id: string;
+}
+
+export interface TaskLog {
+  taskId: number;
+  start: string;
+  end: string;
   taskName: string;
-  start: number;
-  end: number;
+  task: TaskDetails;
+  id: string;
 }
