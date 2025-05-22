@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
-  imports: [
-    FormsModule,
-  ],
-  exports: [
-    FormsModule,
-  ]
+  imports: [FormsModule, ReactiveFormsModule],
+  exports: [FormsModule, ReactiveFormsModule],
 })
-export class SharedModule { }
+export class SharedModule {}
